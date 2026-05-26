@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    HERO / CAROUSEL SECTION
    ========================================================================== */
 .hero-section {
@@ -574,77 +574,7 @@
   100% { transform: translateY(0);   opacity: 0.3; }
 }
 
-/* Soundtrack Pad Generator Toggler */
-.soundtrack-engine-group {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
 
-.soundtrack-title {
-  font-size: 8.5px;
-  letter-spacing: 0.3em;
-  color: rgba(255,255,255,0.2);
-  font-weight: 300;
-  text-transform: uppercase;
-  text-align: right;
-  display: none;
-}
-
-@media (min-width: 1024px) { .soundtrack-title { display: block; } }
-
-.soundtrack-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.625rem 1.25rem;
-  border-radius: 9999px;
-  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.55);
-}
-.soundtrack-btn:hover { border-color: rgba(255,255,255,0.25); }
-.soundtrack-btn.sound-on {
-  border-color: rgba(212,175,55,0.6);
-  color: var(--brand-gold);
-  background-color: rgba(212,175,55,0.04);
-  box-shadow: 0 0 20px rgba(212,175,55,0.15);
-}
-
-.sound-ping-indicator {
-  position: relative;
-  width: 8px; height: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sound-ping-circle {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background-color: rgba(255,255,255,0.35);
-  transition: var(--transition-fast);
-}
-.sound-on .sound-ping-circle { background-color: var(--brand-gold); }
-
-.sound-ping-pulse {
-  position: absolute;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background-color: var(--brand-gold);
-  opacity: 0.75;
-  animation: ping 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
-  display: none;
-}
-.sound-on .sound-ping-pulse { display: block; }
-
-.soundtrack-btn-text {
-  font-size: 9px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-family: monospace;
-}
 
 /* ==========================================================================
    CATEGORY GRID SECTION
@@ -1050,3 +980,207 @@
 .directions-overlay-btn::before { content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent); transition: transform 0.6s ease; z-index: -1; }
 .directions-overlay-btn:hover::before { transform: translateX(200%); }
 .directions-overlay-btn:hover { background-color: transparent; color: var(--brand-gold); box-shadow: 0 15px 35px rgba(212,175,55,0.4); }
+
+/* ==========================================================================
+   HOMEPAGE SPECIFIC RESPONSIVE DESIGN LAYER
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .categories-grid {
+    height: auto !important; /* Allow natural height expansion */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+  
+  .hero-content-spread {
+    padding: 2rem 0;
+  }
+
+  .campaign-desc {
+    margin-bottom: 2rem;
+  }
+  
+  .carousel-chevron-btn {
+    padding: 0.9rem; /* Increase touch target on mobile/tablet */
+  }
+
+  .categories-section {
+    padding: 5rem 0;
+  }
+  
+  .section-intro-row {
+    margin-bottom: 3.5rem;
+    gap: 2rem;
+  }
+  
+  .section-heading-primary {
+    font-size: 2.8rem;
+  }
+
+  .quote-highlights-section {
+    padding: 5rem 0;
+  }
+  
+  .highlights-grid {
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+  }
+  
+  .stylist-section {
+    padding: 5rem 0;
+  }
+  
+  .visit-section {
+    padding: 5rem 0;
+  }
+  
+  .visit-grid {
+    gap: 3.5rem;
+  }
+  
+  .visit-heading-large {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .campaign-title {
+    margin-bottom: 1rem;
+  }
+  
+  .camp-size-large1 { font-size: clamp(2rem, 9vw, 2.8rem); }
+  .camp-size-large2 { font-size: clamp(2.4rem, 11vw, 3.4rem); }
+  .camp-size-medium1 { font-size: clamp(1.4rem, 6vw, 1.8rem); }
+  .camp-size-medium2 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+
+  .quote-box {
+    margin: 1rem 0;
+    padding-left: 1rem;
+    max-width: 100%;
+  }
+  
+  .quote-box-line1 {
+    font-size: 1.15rem;
+  }
+
+  .campaign-desc {
+    font-size: 12px;
+    line-height: 1.55;
+    margin-bottom: 2rem;
+  }
+
+  .campaign-ctas {
+    gap: 1rem;
+  }
+  
+  .cta-btn-primary,
+  .cta-btn-secondary {
+    width: 100%;
+    padding: 1rem 2rem;
+  }
+
+  .hero-controls-bar {
+    gap: 1.25rem;
+  }
+  
+  .carousel-chevrons-group {
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .section-heading-primary {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .quote-heading-fancy {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    margin-bottom: 1.75rem;
+  }
+
+  .stylist-panel-left,
+  .stylist-panel-right {
+    padding: 1.5rem;
+  }
+  
+  .report-text-advice {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+  
+  .selector-option-btn {
+    padding: 0.625rem 1.125rem;
+    font-size: 9px;
+  }
+  
+  .stylist-submit-btn {
+    padding: 0.95rem;
+  }
+
+  .visit-heading-large {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+  
+  .visit-contacts-list {
+    gap: 1.5rem;
+  }
+  
+  .visit-contact-row {
+    gap: 1.25rem;
+  }
+  
+  .visit-icon-btn-circle {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .visit-contact-text {
+    font-size: 0.8rem;
+  }
+  
+  .directions-overlay-btn {
+    padding: 1rem 2rem;
+    font-size: 10px;
+    width: 85%;
+    text-align: center;
+  }
+}
+
+/* Landscape View optimization for Mobiles on Home Hero */
+@media (max-height: 480px) and (orientation: landscape) {
+  .hero-section {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    min-height: auto;
+  }
+  .hero-content-spread {
+    padding: 1rem 0;
+  }
+  .campaign-title {
+    margin-bottom: 0.5rem;
+  }
+  .quote-box {
+    display: none !important; /* Hide quote box in tight landscape displays to fit navigation */
+  }
+  .campaign-desc {
+    display: none !important; /* Hide description in tight landscape displays to fit action buttons */
+  }
+  .campaign-ctas {
+    flex-direction: row !important;
+    gap: 1rem;
+  }
+  .cta-btn-primary, .cta-btn-secondary {
+    width: auto !important;
+    padding: 0.85rem 1.5rem !important;
+  }
+}

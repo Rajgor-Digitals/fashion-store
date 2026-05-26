@@ -15,7 +15,7 @@ const FOOTER_HTML = `
           <!-- Col 1 -->
           <div class="footer-col">
             <span class="footer-col-label">Visit Showroom</span>
-            <a href="https://share.google/jLUgbry8QePtFW1Eu" target="_blank" rel="noopener noreferrer" class="footer-col-val">
+            <a href="https://www.google.com/maps/search/?api=1&query=New+Akshat+Fashion+Bhujpur+Kutch" target="_blank" rel="noopener noreferrer" class="footer-col-val">
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
               <span>Bhujpur, Kutch, Gujarat</span>
             </a>
@@ -72,16 +72,9 @@ const FOOTER_HTML = `
 
       <div class="footer-bottom-row">
         <p>© 2026 NEW AKSHAT FASHION. ALL RIGHTS RESERVED.</p>
-        <div class="footer-bottom-badges">
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-            The Gold Standard
-          </span>
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-            Est. 2012
-          </span>
-        </div>
+        <p class="footer-developed-by">
+          Developed by <a href="https://rajgordigitals.in" target="_blank" rel="noopener noreferrer">Rajgor Digitals</a>
+        </p>
       </div>
     </div>
   </footer>

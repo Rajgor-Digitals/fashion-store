@@ -130,3 +130,34 @@
   color: var(--brand-beige);
   letter-spacing: 0.04em;
 }
+
+/* ==========================================================================
+   COLLECTIONS RESPONSIVE DESIGN LAYER
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .collection-page-header {
+    padding-top: clamp(6rem, 15vw, 8rem);
+    padding-bottom: 3.5rem;
+  }
+  .collection-main-heading {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .collection-main-heading {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+  .collection-items-grid {
+    gap: 1.5rem;
+    padding-bottom: 4rem;
+  }
+  .collection-item-card-glass {
+    left: 1rem; right: 1rem; bottom: 1rem;
+    padding: 1rem;
+  }
+  .collection-item-title {
+    font-size: 1rem;
+  }
+}

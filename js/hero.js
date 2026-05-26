@@ -48,6 +48,15 @@ const CAMPAIGNS = [
     ctaSecondary: "Our Atelier",
     ctaSecondaryLink: "about.html"
   }
+    titleFontClass1: "font-royal-caps-span1 camp-size-medium1",
+    titleFontClass2: "font-royal-caps-span2 camp-size-medium2",
+    quotes: ["\u201cFashion that feels premium.\u201d"],
+    desc: "Uncompromised tactile comfort. Our physical showroom delivers expert design advice, customizable silhouettes, premium luxury consultations, and the comfort of excellence.",
+    ctaPrimary: "Book Appoint",
+    ctaPrimaryLink: "#visit",
+    ctaSecondary: "Our Atelier",
+    ctaSecondaryLink: "about.html"
+  }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -57,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- STATE REGISTRY ---
   let currentCampaignIndex = 0;
   let autoplayActive = true;
-  let soundOn = false;
   let mouse = { x: -1000, y: -1000, targetX: 0, targetY: 0 };
   let autoplayTimer = null;
 
@@ -77,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const btnPrev = document.getElementById('btn-prev');
   const btnNext = document.getElementById('btn-next');
-  const btnSound = document.getElementById('btn-sound');
   const canvas = document.getElementById('hero-canvas');
 
   // --- 1. MOUSE INTERACTION SHIFTER ---
@@ -380,73 +387,4 @@ document.addEventListener('DOMContentLoaded', () => {
   applyCampaignData(0);
   startAutoplayTimer();
 
-  // --- 4. HAUTE AMBIENT AUDIO SYNTH GENERATOR ---
-  let audioCtx = null;
-  let oscillators = [];
-  let masterGain = null;
-
-  const toggleSoundtrack = () => {
-    if (soundOn) {
-      if (masterGain && audioCtx) {
-        masterGain.gain.setValueAtTime(masterGain.gain.value, audioCtx.currentTime);
-        masterGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
-        setTimeout(() => {
-          if (audioCtx && !soundOn) {
-            audioCtx.suspend();
-          }
-        }, 1250);
-      }
-      btnSound.classList.remove('sound-on');
-      btnSound.querySelector('.soundtrack-btn-text').textContent = 'SOUND: OFF';
-      soundOn = false;
-    } else {
-      if (!audioCtx) {
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AudioContextClass();
-
-        masterGain = audioCtx.createGain();
-        masterGain.gain.setValueAtTime(0, audioCtx.currentTime);
-        masterGain.connect(audioCtx.destination);
-
-        const filter = audioCtx.createBiquadFilter();
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(320, audioCtx.currentTime);
-        filter.connect(masterGain);
-
-        const frequencies = [51.91, 77.78, 98.00, 130.81, 155.56];
-        frequencies.forEach((freq) => {
-          const osc = audioCtx.createOscillator();
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-          
-          const lfo = audioCtx.createOscillator();
-          lfo.frequency.setValueAtTime(0.18 + Math.random() * 0.1, audioCtx.currentTime);
-          
-          const lfoGain = audioCtx.createGain();
-          lfoGain.gain.setValueAtTime(1.0 + Math.random() * 0.4, audioCtx.currentTime);
-          
-          lfo.connect(lfoGain);
-          lfoGain.connect(osc.frequency);
-          
-          lfo.start();
-          osc.connect(filter);
-          osc.start();
-          oscillators.push(osc);
-        });
-      }
-
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-
-      masterGain.gain.setValueAtTime(masterGain.gain.value, audioCtx.currentTime);
-      masterGain.gain.exponentialRampToValueAtTime(0.045, audioCtx.currentTime + 1.8);
-
-      btnSound.classList.add('sound-on');
-      btnSound.querySelector('.soundtrack-btn-text').textContent = 'SOUND: ON';
-      soundOn = true;
-    }
-  };
-
-  btnSound.addEventListener('click', toggleSoundtrack);
 });
