@@ -39,15 +39,83 @@
 <body>
 
   <!-- Cinematic Luxury Preloader -->
-  <div id="preloader">
-    <div class="preloader-logo-wrap">
-      <div class="preloader-logo">NEW AKSHAT FASHION</div>
-      <div class="preloader-subtitle">Est. 2012</div>
-      <div class="preloader-bar">
-        <div class="preloader-bar-fill"></div>
+  <div id="preloader" role="status" aria-label="Loading New Akshat Fashion">
+
+    <!-- Ambient corner marks -->
+    <span class="pl-corner pl-corner--tl" aria-hidden="true">+</span>
+    <span class="pl-corner pl-corner--tr" aria-hidden="true">+</span>
+    <span class="pl-corner pl-corner--bl" aria-hidden="true">+</span>
+    <span class="pl-corner pl-corner--br" aria-hidden="true">+</span>
+
+    <!-- Faint blueprint grid lines -->
+    <div class="pl-grid-h" aria-hidden="true"></div>
+    <div class="pl-grid-v" aria-hidden="true"></div>
+
+    <!-- Gold flash overlay for exit -->
+    <div class="pl-flash" aria-hidden="true"></div>
+
+    <!-- Central stage -->
+    <div class="pl-stage">
+
+      <!-- Ornamental diamond SVG -->
+      <div class="pl-ornament" aria-hidden="true">
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="pl-ornament-svg">
+          <polygon class="pl-diamond-outer" points="60,4 116,60 60,116 4,60"/>
+          <polygon class="pl-diamond-inner" points="60,22 98,60 60,98 22,60"/>
+          <line class="pl-cross" x1="60" y1="4"  x2="60" y2="22"/>
+          <line class="pl-cross" x1="60" y1="98" x2="60" y2="116"/>
+          <line class="pl-cross" x1="4"  y1="60" x2="22" y2="60"/>
+          <line class="pl-cross" x1="98" y1="60" x2="116" y2="60"/>
+          <circle class="pl-center-dot" cx="60" cy="60" r="3"/>
+        </svg>
+        <!-- Outer ring (clockwise) -->
+        <div class="pl-ring" aria-hidden="true"></div>
+        <!-- Inner ring (counter-clockwise) -->
+        <div class="pl-ring-inner" aria-hidden="true"></div>
       </div>
-    </div>
-  </div>
+
+      <!-- Brand name — each letter wrapped for stagger -->
+      <div class="pl-brand" aria-label="New Akshat Fashion">
+        <div class="pl-brand-line pl-brand-line--top">
+          <span class="pl-letter" style="--i:0">N</span><span class="pl-letter" style="--i:1">E</span><span class="pl-letter" style="--i:2">W</span>
+        </div>
+        <div class="pl-brand-line pl-brand-line--main">
+          <span class="pl-letter" style="--i:3">A</span><span class="pl-letter" style="--i:4">K</span><span class="pl-letter" style="--i:5">S</span><span class="pl-letter" style="--i:6">H</span><span class="pl-letter" style="--i:7">A</span><span class="pl-letter" style="--i:8">T</span>
+        </div>
+        <div class="pl-brand-line pl-brand-line--sub">
+          <span class="pl-letter" style="--i:9">F</span><span class="pl-letter" style="--i:10">A</span><span class="pl-letter" style="--i:11">S</span><span class="pl-letter" style="--i:12">H</span><span class="pl-letter" style="--i:13">I</span><span class="pl-letter" style="--i:14">O</span><span class="pl-letter" style="--i:15">N</span>
+        </div>
+        <!-- Extending rule lines -->
+        <div class="pl-brand-rule" aria-hidden="true">
+          <div class="pl-brand-rule-line"></div>
+          <div class="pl-brand-rule-dot"></div>
+          <div class="pl-brand-rule-line"></div>
+        </div>
+        <!-- Gold shimmer sweep overlay -->
+        <div class="pl-shimmer" aria-hidden="true"></div>
+      </div>
+
+      <!-- Est. badge -->
+      <div class="pl-badge" aria-hidden="true">
+        <span class="pl-badge-dot"></span>
+        <span class="pl-badge-text">Est. 2012 &nbsp;·&nbsp; Bhujpur, Kutch</span>
+        <span class="pl-badge-dot"></span>
+      </div>
+
+      <!-- Progress track -->
+      <div class="pl-progress-wrap" aria-hidden="true">
+        <div class="pl-progress-track">
+          <div class="pl-progress-fill" id="pl-fill"></div>
+        </div>
+        <div class="pl-progress-meta">
+          <span class="pl-percent" id="pl-percent">0%</span>
+          <span class="pl-status-text" id="pl-status">Preparing</span>
+        </div>
+      </div>
+
+    </div><!-- /.pl-stage -->
+
+  </div><!-- /#preloader -->
 
   <!-- Background Ambience Orbs -->
   <div class="ambient-glow-top"></div>
