@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rajgor Digitals — Architects of the Digital Frontier</title>
+  
+  <meta name="description" content="Rajgor Digitals is a high-end, futuristic digital agency shaping bespoke immersive web experiences, high-performance architectures, and luxury digital design.">
+  <meta name="keywords" content="Rajgor Digitals, futuristic digital agency, premium web design, high-end web development, immersive web applications, bespoke digital experiences, Kutch, Gujarat">
+  <meta name="author" content="Rajgor Digitals">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rajgor Digitals — Architects of the Digital Frontier">
+  <meta property="og:description" content="Futuristic digital studio engineering next-generation visual systems and interactive software.">
+  <meta property="og:image" content="https://www.rajgordigitals.in/assets/og-image.jpg">
+
+  <!-- Google Fonts - Premium Fonts: Syne, Outfit, Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Dynamic Premium Cursor Glow Overlay -->
+  <div class="custom-cursor-glow" id="js-cursor-glow" aria-hidden="true"></div>
+
+  <!-- Reusable Hero Section Container -->
+  <section class="hero-section" id="hero-section">
+    
+    <!-- Background Canvas Layer -->
+    <canvas class="hero-canvas" id="hero-canvas"></canvas>
+
+    <!-- Ambient Glow & Fog Layers -->
+    <div class="glow-orb glow-orb--cyan" aria-hidden="true"></div>
+    <div class="glow-orb glow-orb--violet" aria-hidden="true"></div>
+    <div class="glow-orb glow-orb--amber" aria-hidden="true"></div>
+
+    <!-- Cinematic Subtle Analog Noise Overlay -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- Dark Blending Overlay for Optimal Text Contrast -->
+    <div class="dark-overlay" aria-hidden="true"></div>
+
+    <!-- Architectural HUD Elements / Futuristic Telemetry -->
+    <div class="hud-frame" aria-hidden="true">
+      <div class="hud-tick hud-tick--tl">+</div>
+      <div class="hud-tick hud-tick--tr">+</div>
+      <div class="hud-tick hud-tick--bl">+</div>
+      <div class="hud-tick hud-tick--br">+</div>
+      
+      <!-- Telemetry Labels -->
+      <span class="hud-label hud-label--top-left">SYS_STATUS: ENGAGED</span>
+      <span class="hud-label hud-label--top-right">COORDS // 22.8465° N, 69.6685° E</span>
+      <span class="hud-label hud-label--bottom-left">NEURAL_DENSITY: <span id="js-density-indicator">CALCULATING</span></span>
+      <span class="hud-label hud-label--bottom-right">REF: RAJGOR_DIGITALS_V2.0</span>
+
+      <!-- Sidebar Tech Grid -->
+      <div class="hud-sidebar hud-sidebar--left">
+        <div class="hud-bar-fill"></div>
+        <div class="hud-pulse-dot"></div>
+      </div>
+      <div class="hud-sidebar hud-sidebar--right">
+        <div class="hud-numbers-stagger">
+          <div>01</div>
+          <div>02</div>
+          <div>03</div>
+          <div class="active">04</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Elegant Floating Navigation Bar -->
+    <header class="glass-navbar">
+      <div class="nav-container">
+        <a href="#hero-section" class="brand-logo" id="brand-logo">
+          <span class="logo-accent">R</span>AJGOR<span>.</span>DIGITALS
+        </a>
+        <nav class="nav-links" id="main-nav">
+          <a href="#services" class="nav-item">Services</a>
+          <a href="#about" class="nav-item">Atelier</a>
+          <a href="#showcase" class="nav-item">Showcase</a>
+        </nav>
+        <div class="nav-actions">
+          <a href="#contact" class="nav-cta-mini" id="nav-cta-mini">
+            <span>INITIATE PROJECT</span>
+            <svg class="arrow-svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Foreground Content Layer -->
+    <div class="hero-content-wrapper">
+      <div class="hero-content-grid">
+        
+        <!-- Main Core Copy Panel -->
+        <main class="hero-main-panel">
+          <div class="badge-container" id="hero-badge">
+            <span class="badge-pulse" aria-hidden="true"></span>
+            <span class="badge-text">NEXT-GEN CREATIVE FORCE</span>
+          </div>
+
+          <h1 class="hero-title" id="hero-title">
+            <span class="hero-title-line hero-title-line--1">WE SHAPE</span>
+            <span class="hero-title-line hero-title-line--2">THE FUTURISTIC</span>
+            <span class="hero-title-line hero-title-line--3 glowing-text">DIGITAL WORLD</span>
+          </h1>
+
+          <p class="hero-description" id="hero-description">
+            Bespoke engineering meets luxury cinematic digital design. We craft immersive high-end web platforms and interactive software that elevate global brands into cultural legends.
+          </p>
+
+          <div class="hero-ctas" id="hero-ctas">
+            <a href="#initiate" class="btn-primary" id="btn-primary">
+              <span class="btn-glow-layer"></span>
+              <span class="btn-text">LAUNCH INITIATIVE</span>
+              <svg class="btn-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#capabilities" class="btn-secondary" id="btn-secondary">
+              <span class="btn-text">EXPLORE CAPABILITIES</span>
+              <span class="btn-hover-line"></span>
+            </a>
+          </div>
+        </main>
+
+        <!-- Right Side Glassmorphic Widgets Dashboard -->
+        <aside class="hero-widgets-panel" id="hero-widgets">
+          <!-- Widget 1: Engine Diagnostics -->
+          <div class="glass-widget glass-widget--diagnostics">
+            <div class="widget-header">
+              <span class="widget-dot green"></span>
+              <span class="widget-title">SYSTEM DIAGNOSTICS</span>
+              <span class="widget-metric" id="js-fps-counter">60 FPS</span>
+            </div>
+            <div class="widget-body">
+              <div class="diagnostic-row">
+                <span class="diag-label">LATENCY</span>
+                <span class="diag-value neon-cyan">&lt; 8ms</span>
+              </div>
+              <div class="diagnostic-row">
+                <span class="diag-label">ACTIVE NODES</span>
+                <span class="diag-value neon-violet" id="js-active-nodes">--</span>
+              </div>
+              <div class="diagnostic-row">
+                <span class="diag-label">WEBGL ENVELOPE</span>
+                <span class="diag-value neon-amber">STABLE_100</span>
+              </div>
+              <div class="progress-bar-hud">
+                <div class="progress-fill-hud" id="js-progress-hud"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Widget 2: Agency Specialization -->
+          <div class="glass-widget glass-widget--statement">
+            <div class="statement-title">ESTABLISHED IN KUTCH // OPERATING GLOBALLY</div>
+            <div class="statement-text">
+              "An elegant, immersive digital showcase is not an option; it is the core signature of modern commercial sovereignty."
+            </div>
+            <div class="statement-footer">
+              <span class="sig-title">FOUNDER & CEO</span>
+              <span class="sig-name">JAY RAJGOR</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- Scrolling Anchor Prompt -->
+    <div class="scroll-prompt-container" id="scroll-prompt">
+      <span class="scroll-text">DISCOVER MORE</span>
+      <div class="scroll-indicator">
+        <div class="scroll-wheel"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- JS Execution Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

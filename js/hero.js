@@ -48,15 +48,6 @@ const CAMPAIGNS = [
     ctaSecondary: "Our Atelier",
     ctaSecondaryLink: "about.html"
   }
-    titleFontClass1: "font-royal-caps-span1 camp-size-medium1",
-    titleFontClass2: "font-royal-caps-span2 camp-size-medium2",
-    quotes: ["\u201cFashion that feels premium.\u201d"],
-    desc: "Uncompromised tactile comfort. Our physical showroom delivers expert design advice, customizable silhouettes, premium luxury consultations, and the comfort of excellence.",
-    ctaPrimary: "Book Appoint",
-    ctaPrimaryLink: "#visit",
-    ctaSecondary: "Our Atelier",
-    ctaSecondaryLink: "about.html"
-  }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -103,37 +94,121 @@ document.addEventListener('DOMContentLoaded', () => {
     mouse = { x: -1000, y: -1000, targetX: 0, targetY: 0 };
   });
 
-  // --- 2. THE RICH CANVAS RENDERING ENGINE ---
+  // --- 2. THE RICH CANVAS RENDERING ENGINE (PREMIUM NEURAL NETWORK UPGRADE) ---
   if (canvas) {
     const ctx = canvas.getContext('2d');
     if (ctx) {
-      let width = (canvas.width = canvas.offsetWidth);
-      let height = (canvas.height = canvas.offsetHeight);
+      let width = canvas.offsetWidth || window.innerWidth;
+      let height = canvas.offsetHeight || window.innerHeight;
 
-      const handleResize = () => {
-        width = canvas.width = canvas.offsetWidth;
-        height = canvas.height = canvas.offsetHeight;
+      // Setup sharp Retina display mapping
+      const setupCanvasSize = () => {
+        let canvasWidth = canvas.offsetWidth;
+        let canvasHeight = canvas.offsetHeight;
+        
+        // Fallback to viewport if layout is uncomputed
+        if (!canvasWidth || canvasWidth === 0) canvasWidth = window.innerWidth;
+        if (!canvasHeight || canvasHeight === 0) canvasHeight = window.innerHeight;
+
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = canvasWidth * dpr;
+        canvas.height = canvasHeight * dpr;
+        ctx.scale(dpr, dpr);
+        width = canvasWidth;
+        height = canvasHeight;
+        initParticleLayers();
       };
-      window.addEventListener('resize', handleResize);
 
-      // Particulate definitions
-      const dustCount = 85;
-      const particles = [];
-      const goldPaints = ['#D4AF37', '#F3E5AB', '#FFE484', '#C5A02B', '#E6C280'];
+      // Configuration of counts depending on mobile vs desktop
+      let bgCount = 50;
+      let networkCount = 70;
+      let fgCount = 12;
+      let lineDistance = 120;
+      let isMobile = false;
 
-      for (let i = 0; i < dustCount; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          z: Math.random() * 0.8 + 0.2,
-          radius: Math.random() * 1.5 + 0.3,
-          color: goldPaints[Math.floor(Math.random() * goldPaints.length)],
-          speed: Math.random() * 0.2 + 0.05,
-          amplitude: Math.random() * 30 + 10,
-          phase: Math.random() * Math.PI * 2,
-          opacity: Math.random() * 0.4 + 0.1
-        });
-      }
+      const adjustDensity = () => {
+        if (window.innerWidth < 768) {
+          bgCount = 35;
+          networkCount = 42;
+          fgCount = 6;
+          lineDistance = 95;
+          isMobile = true;
+        } else {
+          bgCount = 75;
+          networkCount = 120;
+          fgCount = 20;
+          lineDistance = 135;
+          isMobile = false;
+        }
+      };
+
+      // Particle Storage arrays
+      let bgParticles = [];
+      let netParticles = [];
+      let fgParticles = [];
+
+      const goldPaints = ['212, 175, 55', '243, 229, 171', '255, 228, 132', '197, 160, 43', '230, 194, 128'];
+      const violetAccent = '139, 92, 246'; // Complementary luxury violet accent
+
+      // Particle Layer Initializations
+      const initParticleLayers = () => {
+        adjustDensity();
+        bgParticles = [];
+        netParticles = [];
+        fgParticles = [];
+
+        // 1. Deep stars background
+        for (let i = 0; i < bgCount; i++) {
+          bgParticles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 1.2 + 0.4,
+            alpha: Math.random() * 0.35 + 0.15,
+            speedY: Math.random() * -0.05 - 0.02,
+            speedX: Math.random() * 0.04 - 0.02
+          });
+        }
+
+        // 2. Main neural interactive network
+        for (let i = 0; i < networkCount; i++) {
+          let color = goldPaints[Math.floor(Math.random() * goldPaints.length)];
+
+          const vx = Math.random() * 0.3 - 0.15;
+          const vy = Math.random() * 0.3 - 0.15;
+
+          netParticles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 1.6 + 1.2,
+            color: color,
+            alpha: Math.random() * 0.4 + 0.4,
+            vx: vx,
+            vy: vy,
+            baseVx: vx,
+            baseVy: vy,
+            angle: Math.random() * Math.PI * 2,
+            angleSpeed: Math.random() * 0.01 + 0.005
+          });
+        }
+
+        // 3. Foreground blurry lens-bokeh floaters
+        for (let i = 0; i < fgCount; i++) {
+          fgParticles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 5.0 + 3.0,
+            color: goldPaints[Math.floor(Math.random() * goldPaints.length)],
+            alpha: Math.random() * 0.25 + 0.1,
+            speedY: Math.random() * -0.4 - 0.15,
+            speedX: Math.random() * 0.2 - 0.1,
+            parallaxMultiplier: (Math.random() * 4.0 + 3.0) * 0.03
+          });
+        }
+      };
+
+      // Set initial dimensions
+      setupCanvasSize();
+      window.addEventListener('resize', setupCanvasSize);
 
       let smoothCamX = 0;
       let smoothCamY = 0;
@@ -142,14 +217,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const tick = (time) => {
         ctx.clearRect(0, 0, width, height);
 
-        // Smooth camera dampings
+        // Smooth camera dampings (LERP)
         smoothCamX += (mouse.targetX - smoothCamX) * 0.04;
         smoothCamY += (mouse.targetY - smoothCamY) * 0.04;
 
-        // Apply scale transition to container element
+        // Apply scale transition to container element for depth illusion
         canvas.style.transform = `scale(1.04) translate3d(${-smoothCamX * 0.4}px, ${-smoothCamY * 0.4}px, 0)`;
 
-        // Background Gold Light
+        // Background Radial Ambient Gold Light (Cinematic)
         const radial2 = ctx.createRadialGradient(
           width * 0.65 - smoothCamX * 0.1,
           height * 0.4 - smoothCamY * 0.1,
@@ -158,20 +233,21 @@ document.addEventListener('DOMContentLoaded', () => {
           height * 0.4,
           Math.max(width, height) * 0.32
         );
-        radial2.addColorStop(0, 'rgba(212, 175, 55, 0.025)');
-        radial2.addColorStop(1, 'rgba(212, 175, 55, 0)');
+        radial2.addColorStop(0, 'rgba(212, 175, 55, 0.035)');
+        radial2.addColorStop(0.5, 'rgba(243, 229, 171, 0.015)'); // Add warm champagne gold overlay core
+        radial2.addColorStop(1, 'rgba(6, 6, 6, 0)');
         ctx.fillStyle = radial2;
         ctx.fillRect(0, 0, width, height);
 
-        // Couture Blueprint Rings
-        rotationAngle += 0.0007;
+        // Couture Blueprint Rings (Luxury marks)
+        rotationAngle += 0.0006;
         const centerX = width * 0.65;
         const centerY = height * 0.5;
 
-        ctx.strokeStyle = 'rgba(214, 175, 55, 0.055)';
+        ctx.strokeStyle = 'rgba(214, 175, 55, 0.06)';
         ctx.lineWidth = 1;
-        ctx.shadowColor = 'rgba(212, 175, 55, 0.4)';
-        ctx.shadowBlur = 12;
+        ctx.shadowColor = 'rgba(212, 175, 55, 0.3)';
+        ctx.shadowBlur = 10;
 
         ctx.save();
         ctx.translate(centerX - smoothCamX * 0.2, centerY - smoothCamY * 0.2);
@@ -194,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.shadowBlur = 0;
 
         // Architectural Grid Boundaries
-        ctx.strokeStyle = 'rgba(212, 175, 55, 0.025)';
+        ctx.strokeStyle = 'rgba(212, 175, 55, 0.03)';
         ctx.lineWidth = 1;
         ctx.setLineDash([]);
         ctx.beginPath();
@@ -204,72 +280,140 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.lineTo(width * 0.9, height);
         ctx.stroke();
 
-        // Weaving Wave Paths
-        const weaveCount = 3;
-        for (let w = 0; w < weaveCount; w++) {
+        // 1. Render Layer 1: Background Stars
+        bgParticles.forEach(p => {
+          p.x += p.speedX;
+          p.y += p.speedY;
+
+          // Wrap boundaries
+          if (p.y < 0) p.y = height;
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+
+          // Slide parallax shift
+          const finalX = p.x - smoothCamX * 0.15;
+          const finalY = p.y - smoothCamY * 0.15;
+
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(214, 175, 55, ${0.015 - w * 0.003})`;
-          ctx.lineWidth = 1.5;
+          ctx.arc(finalX, finalY, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
+          ctx.fill();
+        });
 
-          for (let x = 0; x < width; x += 15) {
-            const sinVal = (x * 0.002) + (time * 0.0003) + (w * 2.5);
-            const cosVal = (x * 0.004) - (time * 0.0001) + (w * 1.2);
-            const yOffset = Math.sin(sinVal) * 110 + Math.cos(cosVal) * 45;
-            const finalY = height * 0.45 + yOffset - (smoothCamY * (0.1 + w * 0.05));
+        // 2. Render Layer 2: Main Connected Neural Network
+        netParticles.forEach(p => {
+          p.angle += p.angleSpeed;
+          const wave = Math.sin(p.angle) * 0.06;
 
-            if (x === 0) {
-              ctx.moveTo(x, finalY);
-            } else {
-              ctx.lineTo(x, finalY);
+          p.x += p.vx + wave;
+          p.y += p.vy + wave;
+
+          // Mouse spring interaction
+          if (mouse.x > -500) {
+            const dx = mouse.x - p.x;
+            const dy = mouse.y - p.y;
+            const dist = Math.hypot(dx, dy);
+
+            if (dist < 160) {
+              const force = (160 - dist) / 160;
+              // Swirl and repel force
+              const swirlX = -dy / dist;
+              const swirlY = dx / dist;
+              p.vx -= ((dx / dist) * 0.2 + swirlX * 0.15) * force;
+              p.vy -= ((dy / dist) * 0.2 + swirlY * 0.15) * force;
             }
           }
-          ctx.stroke();
+
+          // Return velocity to normal base speeds
+          p.vx += (p.baseVx - p.vx) * 0.03;
+          p.vy += (p.baseVy - p.vy) * 0.03;
+
+          // Boundary checks
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          // Parallax camera adjustments
+          const finalX = p.x - smoothCamX * 0.5;
+          const finalY = p.y - smoothCamY * 0.5;
+
+          ctx.beginPath();
+          ctx.arc(finalX, finalY, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = `rgba(${p.color}, 0.65)`;
+          ctx.fill();
+          ctx.shadowBlur = 0; // Reset canvas shadow state
+        });
+
+        // Connect neural network lines
+        if (!isMobile) {
+          const len = netParticles.length;
+          for (let i = 0; i < len; i++) {
+            const p1 = netParticles[i];
+            const fX1 = p1.x - smoothCamX * 0.5;
+            const fY1 = p1.y - smoothCamY * 0.5;
+
+            for (let j = i + 1; j < len; j++) {
+              const p2 = netParticles[j];
+              const fX2 = p2.x - smoothCamX * 0.5;
+              const fY2 = p2.y - smoothCamY * 0.5;
+
+              const dx = fX1 - fX2;
+              const dy = fY1 - fY2;
+              const dist = Math.hypot(dx, dy);
+
+              if (dist < lineDistance) {
+                const opacity = (1 - dist / lineDistance) * 0.38;
+                ctx.beginPath();
+                ctx.moveTo(fX1, fY1);
+                ctx.lineTo(fX2, fY2);
+
+                const grad = ctx.createLinearGradient(fX1, fY1, fX2, fY2);
+                grad.addColorStop(0, `rgba(${p1.color}, ${opacity})`);
+                grad.addColorStop(1, `rgba(${p2.color}, ${opacity})`);
+
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = 0.95;
+                ctx.stroke();
+              }
+            }
+          }
         }
 
-        // Shimmering Gold Dust
-        particles.forEach(p => {
-          p.y -= p.speed * p.z;
-          p.phase += 0.008;
-          const oX = Math.sin(p.phase) * p.amplitude * 0.08;
+        // 3. Render Layer 3: Blurry Foreground Bokeh
+        fgParticles.forEach(p => {
+          p.x += p.speedX;
+          p.y += p.speedY;
 
+          // Wrap bounds
           if (p.y < -30) {
             p.y = height + 30;
             p.x = Math.random() * width;
           }
-
-          let pullX = 0;
-          let pullY = 0;
-          if (mouse.x > 0 && mouse.y > 0) {
-            const dx = mouse.x - (p.x + oX);
-            const dy = mouse.y - p.y;
-            const dist = Math.hypot(dx, dy);
-
-            if (dist < 280) {
-              const force = (280 - dist) / 280;
-              const swirlX = -dy / dist;
-              const swirlY = dx / dist;
-              pullX = ((dx / dist) * 0.45 + swirlX * 0.55) * force * p.z * 22;
-              pullY = ((dy / dist) * 0.45 + swirlY * 0.55) * force * p.z * 22;
-            }
+          if (p.x < -30 || p.x > width + 30) {
+            p.x = Math.random() * width;
           }
 
-          const finalX = p.x + oX - smoothCamX * p.z * 0.6 + pullX;
-          const finalY = p.y - smoothCamY * p.z * 0.6 + pullY;
+          // Parallax camera adjustments
+          const relativeX = (mouse.x - width / 2) * p.parallaxMultiplier * -0.04;
+          const relativeY = (mouse.y - height / 2) * p.parallaxMultiplier * -0.04;
 
-          if (finalX >= 0 && finalX <= width && finalY >= 0 && finalY <= height) {
-            const shimmer = 0.4 + Math.sin(time * 0.003 + p.phase) * 0.6;
-            ctx.fillStyle = p.color;
-            ctx.globalAlpha = p.opacity * p.z * shimmer;
-            ctx.beginPath();
-            ctx.arc(finalX, finalY, p.radius * p.z, 0, Math.PI * 2);
-            ctx.fill();
-          }
+          const finalX = p.x - smoothCamX * 0.95 + relativeX;
+          const finalY = p.y - smoothCamY * 0.95 + relativeY;
+
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(finalX, finalY, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
+          ctx.shadowBlur = p.radius * 2.0;
+          ctx.shadowColor = `rgba(${p.color}, 0.5)`;
+          ctx.fill();
+          ctx.restore();
         });
 
-        ctx.globalAlpha = 1;
         requestAnimationFrame(tick);
       };
-      
+
       requestAnimationFrame(tick);
     }
   }
@@ -318,7 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       resetTimelineProgressBar();
-    }, 400);
+    }, 280);
   };
 
   const resetTimelineProgressBar = () => {
