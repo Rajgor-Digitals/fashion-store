@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="New Akshat Fashion">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#F5E27A"/>
+      <stop offset="35%"  stop-color="#D4AF37"/>
+      <stop offset="70%"  stop-color="#C9A227"/>
+      <stop offset="100%" stop-color="#F0D060"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#F5E27A"/>
+      <stop offset="50%"  stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#A0831A"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Black background -->
+  <rect width="64" height="64" rx="6" fill="#0A0804"/>
+
+  <!-- Outer thin border -->
+  <rect width="64" height="64" rx="6" fill="none" stroke="url(#g1)" stroke-width="0.6" opacity="0.4"/>
+
+  <!-- Diamond ornament -->
+  <g transform="translate(32, 26)" filter="url(#glow)">
+    <!-- Outer diamond -->
+    <polygon points="0,-20 20,0 0,20 -20,0"
+             fill="none" stroke="url(#g1)" stroke-width="1.2" opacity="0.95"/>
+    <!-- Mid diamond -->
+    <polygon points="0,-12 12,0 0,12 -12,0"
+             fill="none" stroke="url(#g1)" stroke-width="0.8" opacity="0.7"/>
+    <!-- Inner fill diamond -->
+    <polygon points="0,-6 6,0 0,6 -6,0"
+             fill="url(#g1)" opacity="0.25"/>
+    <polygon points="0,-6 6,0 0,6 -6,0"
+             fill="none" stroke="url(#g1)" stroke-width="0.6" opacity="0.9"/>
+    <!-- Cross connectors -->
+    <line x1="0" y1="-20" x2="0" y2="-12" stroke="url(#g1)" stroke-width="0.7" opacity="0.7"/>
+    <line x1="0" y1="12"  x2="0" y2="20"  stroke="url(#g1)" stroke-width="0.7" opacity="0.7"/>
+    <line x1="-20" y1="0" x2="-12" y2="0" stroke="url(#g1)" stroke-width="0.7" opacity="0.7"/>
+    <line x1="12"  y1="0" x2="20"  y2="0" stroke="url(#g1)" stroke-width="0.7" opacity="0.7"/>
+    <!-- Center dot -->
+    <circle cx="0" cy="0" r="1.8" fill="url(#g1)"/>
+    <circle cx="0" cy="0" r="0.7" fill="#FFF5CC"/>
+  </g>
+
+  <!-- Thin rule lines -->
+  <line x1="8"  y1="49" x2="56" y2="49" stroke="url(#g1)" stroke-width="0.4" opacity="0.5"/>
+
+  <!-- "NAF" monogram text -->
+  <text x="32" y="47"
+        font-family="'Bodoni Moda', 'Bodoni 72', 'Didot', Georgia, serif"
+        font-size="8.5" font-weight="700" letter-spacing="3.5"
+        text-anchor="middle" fill="url(#g2)" filter="url(#glow)">NAF</text>
+
+  <!-- Corner marks -->
+  <g stroke="url(#g1)" stroke-width="0.6" opacity="0.35" fill="none">
+    <polyline points="8,3 4,3 4,8"/>
+    <polyline points="56,3 60,3 60,8"/>
+    <polyline points="8,61 4,61 4,56"/>
+    <polyline points="56,61 60,61 60,56"/>
+  </g>
+</svg>

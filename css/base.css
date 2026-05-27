@@ -1693,6 +1693,20 @@ body.menu-open .navbar .brand-logo {
   text-overflow: ellipsis;
 }
 
+/* Text fallback when logo image is absent */
+.mm-brand-name {
+  display: block;
+  font-family: var(--font-royal-caps);
+  font-size: clamp(0.75rem, 2.8vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--brand-gold);
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Circular close button */
 .mm-close {
   display: flex;

@@ -161,3 +161,137 @@
     font-size: 1rem;
   }
 }
+
+/* ==========================================================================
+   THE ATELIER CRAFTSMANSHIP & PHILOSOPHY
+   ========================================================================== */
+.collection-header-desc {
+  font-size: 1rem;
+  line-height: 1.625;
+  color: rgba(245, 245, 240, 0.75);
+  max-width: 32rem;
+  margin-top: 1.5rem;
+  font-weight: 300;
+}
+
+.atelier-craft-section {
+  padding: 8rem 0;
+  background-color: var(--brand-black-light);
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.section-intro-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-intro-row {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.craft-heading {
+  font-size: 3.5rem;
+  font-family: var(--font-serif);
+  color: var(--brand-beige);
+  line-height: 1.2;
+}
+
+.craft-heading span {
+  color: var(--brand-gold);
+  font-style: italic;
+}
+
+.craft-intro-paragraph {
+  max-width: 24rem;
+  color: rgba(245, 245, 240, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.625;
+  font-weight: 300;
+}
+
+.craft-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .craft-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.craft-card {
+  background: rgba(10, 10, 10, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.08);
+  padding: 2.5rem;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: var(--transition-smooth);
+}
+
+.craft-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.05);
+  background: rgba(10, 10, 10, 0.5);
+}
+
+.craft-card-icon-box {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  transition: var(--transition-smooth);
+}
+
+.craft-card:hover .craft-card-icon-box {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: var(--brand-gold);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.craft-card-title {
+  font-size: 1.25rem;
+  font-family: var(--font-serif-royal);
+  font-style: italic;
+  color: var(--brand-beige);
+  margin-bottom: 1rem;
+  transition: var(--transition-smooth);
+}
+
+.craft-card:hover .craft-card-title {
+  color: var(--brand-gold);
+}
+
+.craft-card-desc {
+  font-size: 0.85rem;
+  color: rgba(245, 245, 240, 0.55);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .atelier-craft-section {
+    padding: 5rem 0;
+  }
+  .craft-heading {
+    font-size: 2.8rem;
+  }
+  .craft-card {
+    padding: 2rem;
+  }
+}

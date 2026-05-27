@@ -53,8 +53,7 @@ const NAVBAR_HTML = `
     <!-- Panel Top: Brand Stack -->
     <div class="mm-header">
       <a href="index.html" class="mm-brand" tabindex="-1">
-        <span class="mm-brand-line1">NEW AKSHAT</span>
-        <span class="mm-brand-line2">FASHION</span>
+        <span class="mm-brand-name">NEW AKSHAT FASHION</span>
       </a>
     </div>
 
