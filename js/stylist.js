@@ -1,10 +1,11 @@
 /**
  * ==========================================================================
- * NEW AKSHAT FASHION - AI STYLING REPORT UTILS
- * Hooks selector events and targets Google Generative AI REST endpoints directly.
- * Features typewriter rendering and copy/share social functionalities.
+ * NEW AKSHAT FASHION - SMART STYLIST (local tips, no API key)
  * ==========================================================================
  */
+
+// Clear any previously stored Gemini API key so the old prompt never fires
+try { localStorage.removeItem('VITE_GEMINI_API_KEY'); } catch(e) {}
 
 document.addEventListener('DOMContentLoaded', () => {
   const panel = document.querySelector('.stylist-card');
@@ -65,119 +66,80 @@ document.addEventListener('DOMContentLoaded', () => {
     }, speed);
   };
 
-  // --- 3. THE STYLING REPORT API ENGINE ---
-  const fetchFashionAdvice = async (category, occasion) => {
-    let apiKey = null;
-    try {
-      apiKey = localStorage.getItem('VITE_GEMINI_API_KEY');
-    } catch (e) {
-      console.warn("localStorage access blocked on file:// protocol. Using session fallback.", e);
-    }
-    
-    if (!apiKey || apiKey === 'YOUR_API_KEY_HERE') {
-      const keyPrompt = prompt("Please enter your Google Gemini API Key to use the Smart Stylist AI features. It will be saved locally in your browser session:", "");
-      if (keyPrompt) {
-        apiKey = keyPrompt.trim();
-        try {
-          localStorage.setItem('VITE_GEMINI_API_KEY', apiKey);
-        } catch (e) {
-          console.warn("Unable to persist VITE_GEMINI_API_KEY to localStorage on this protocol.", e);
-        }
-      } else {
-        return "For this specific occasion, our designers recommend pairing textured natural cotton shirts with classic chinos for an effortlessly tailored presence. Discover the finest selection of fits in Bhujpur, Kutch, exclusively at New Akshat Fashion.";
-      }
-    }
+  // --- 3. THE STYLING REPORT ENGINE (local tips — no API key needed) ---
+  const STYLE_TIPS = {
+    Men: {
+      Wedding:  "For a wedding, pair a rich silk sherwani in ivory or gold with embroidered mojris. Layer a contrast dupatta over the shoulder for a regal finish. New Akshat Fashion carries the finest wedding sherwanis in Bhujpur, Kutch.",
+      Casual:   "A well-fitted linen kurta in earthy tones paired with straight-cut trousers is the perfect casual statement. Keep accessories minimal — a leather watch does the job. Find your ideal casual fit at New Akshat Fashion.",
+      Festival: "Go bold for festivals — a printed cotton kurta in deep saffron or royal blue with churidar pants commands attention. Add a Nehru jacket to elevate the look. Explore our festival collection at New Akshat Fashion, Bhujpur.",
+      Party:    "A slim-fit bandhgala jacket in midnight black or deep maroon over a crisp white shirt is effortlessly sharp for parties. New Akshat Fashion has an exclusive range of party-ready menswear in Kutch.",
+    },
+    Women: {
+      Wedding:  "A Banarasi silk saree in deep red or emerald green with a contrast blouse and gold jewellery is timeless for weddings. New Akshat Fashion offers the finest bridal sarees and lehengas in Bhujpur, Kutch.",
+      Casual:   "A flowy printed kurti with palazzo pants in a complementary tone is both comfortable and stylish for everyday wear. Pair with kolhapuri sandals for a complete look. Shop the latest kurtis at New Akshat Fashion.",
+      Festival: "A vibrant Chaniya Choli in mirror-work or bandhani print is the ultimate festival outfit. Choose bright pinks, oranges, or turquoise to stand out. New Akshat Fashion has the best festival collection in Kutch.",
+      Party:    "An embellished georgette saree or a designer anarkali suit in jewel tones is perfect for evening parties. Let the fabric do the talking with minimal jewellery. Discover party wear at New Akshat Fashion, Bhujpur.",
+    },
+    Kids: {
+      Wedding:  "Dress little ones in a mini sherwani with a matching safa for boys, or a lehenga choli in pastel shades for girls — adorable and occasion-perfect. New Akshat Fashion has a delightful kids' wedding range.",
+      Casual:   "Comfortable cotton kurta-pyjama sets in fun prints keep kids stylish and at ease for casual outings. Easy to wear, easy to wash. Find the best kids' casuals at New Akshat Fashion, Bhujpur.",
+      Festival: "Bright bandhani or block-print outfits in festive colours make kids the star of any celebration. Pair with traditional footwear for the full look. Shop kids' festival wear at New Akshat Fashion.",
+      Party:    "A smart Indo-western outfit — a printed jacket over a kurta for boys, or a ruffled dress with embroidery for girls — is perfect for kids' parties. New Akshat Fashion has a wide kids' party collection in Kutch.",
+    },
+  };
 
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
-
-    const promptText = `You are an expert fashion stylist for "New Akshat Fashion", a premium family clothing showroom. 
-    Provide a concise (2-3 sentences), luxurious fashion tip for a customer looking for ${category} wear for a ${occasion} occasion. 
-    Be encouraging and focus on quality and style. Mention that New Akshat Fashion has the best collections in Bhujpur, Kutch.`;
-
-    try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: promptText
-            }]
-          }],
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 250
-          }
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data.candidates[0].content.parts[0].text;
-    } catch (err) {
-      console.error("Gemini API Request Failed:", err);
-      return "Our experts recommend selecting fine silks for ethnic weddings, clean linens for casual events, and premium structured jackets for evening festivals. Visit us at New Akshat Fashion, Bhujpur to discover our bespoke fits.";
-    }
+  const fetchFashionAdvice = (category, occasion) => {
+    const tip = STYLE_TIPS[category]?.[occasion];
+    return tip || "Our experts recommend visiting New Akshat Fashion in Bhujpur, Kutch to explore our premium collection and get personalised styling advice from our in-store consultants.";
   };
 
   // --- 4. SUBMIT HANDLER ---
-  btnSubmit.addEventListener('click', async () => {
+  btnSubmit.addEventListener('click', () => {
     if (loading) return;
 
     loading = true;
     btnSubmit.disabled = true;
-    
-    // Hide previous advice action buttons
+
     if (reportActions) {
       reportActions.style.opacity = '0';
       reportActions.style.pointerEvents = 'none';
     }
-    
-    // Toggle loader text
+
     btnSubmit.innerHTML = `
       <svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="6"/><line x1="12" x2="12" y1="18" y2="22"/><line x1="4.93" x2="7.76" y1="4.93" y2="7.76"/><line x1="16.24" x2="19.07" y1="16.24" y2="19.07"/><line x1="2" x2="6" y1="12" y2="12"/><line x1="18" x2="22" y1="12" y2="12"/><line x1="4.93" x2="7.76" y1="19.07" y2="16.24"/><line x1="16.24" x2="19.07" y1="7.76" y2="4.93"/></svg>
       Analyzing Trends...
     `;
 
-    // Dot indicators shimmer
     dot1.classList.add('lit');
     dot2.classList.add('lit');
     dot3.classList.add('lit');
 
-    // Run fetch
-    const advice = await fetchFashionAdvice(selectedCategory, selectedOccasion);
-    currentAdviceText = advice.trim();
+    // Small delay so the spinner is visible before result appears
+    setTimeout(() => {
+      const advice = fetchFashionAdvice(selectedCategory, selectedOccasion);
+      currentAdviceText = advice.trim();
 
-    // Reset indicator lights
-    dot2.classList.remove('lit');
-    dot3.classList.remove('lit');
+      dot2.classList.remove('lit');
+      dot3.classList.remove('lit');
 
-    // Hide pre-loader
-    reportPre.style.display = 'none';
-    reportAdviceText.textContent = '';
-    reportAdviceText.classList.add('visible');
+      reportPre.style.display = 'none';
+      reportAdviceText.textContent = '';
+      reportAdviceText.classList.add('visible');
 
-    // Typewriter printout
-    typeWriter(reportAdviceText, currentAdviceText, 18, () => {
-      // Reveal action buttons on typing complete
-      if (reportActions) {
-        reportActions.style.opacity = '1';
-        reportActions.style.pointerEvents = 'auto';
-      }
-    });
+      typeWriter(reportAdviceText, currentAdviceText, 18, () => {
+        if (reportActions) {
+          reportActions.style.opacity = '1';
+          reportActions.style.pointerEvents = 'auto';
+        }
+      });
 
-    // Reset Submit State
-    loading = false;
-    btnSubmit.disabled = false;
-    btnSubmit.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      Get Recommendations
-    `;
+      loading = false;
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Get Recommendations
+      `;
+    }, 600);
   });
 
   // --- 5. SOCIAL SHARE & COPY LOGIC ---
