@@ -11,6 +11,7 @@ const NAVBAR_HTML = `
 
       <!-- Brand Logo -->
       <a href="index.html" class="brand-logo" id="nav-brand-link" aria-label="New Akshat Fashion Home">
+        <img src="assets/images/logo.webp" class="brand-logo-img" alt="New Akshat Fashion Logo">
         <span class="brand-title">NEW AKSHAT FASHION</span>
       </a>
 
@@ -53,6 +54,7 @@ const NAVBAR_HTML = `
     <!-- Panel Top: Brand Stack -->
     <div class="mm-header">
       <a href="index.html" class="mm-brand" tabindex="-1">
+        <img src="assets/images/logo.webp" class="brand-logo-img mm-logo-img" alt="New Akshat Fashion Logo">
         <span class="mm-brand-name">NEW AKSHAT FASHION</span>
       </a>
     </div>

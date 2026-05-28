@@ -719,6 +719,22 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0;
 }
 
+.brand-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+  transition: var(--transition-smooth);
+}
+
+.mm-logo-img {
+  height: 24px;
+}
+
+.brand-logo:hover .brand-logo-img {
+  transform: scale(1.02);
+  filter: drop-shadow(0 0 8px var(--brand-gold));
+}
+
 .brand-title {
   font-family: var(--font-royal-caps);
   font-size: clamp(0.85rem, 3.8vw, 1.125rem);
@@ -1658,8 +1674,9 @@ body.menu-open .navbar .brand-logo {
 /* Brand name inside panel — two-line stacked */
 .mm-brand {
   display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
   text-decoration: none;
   line-height: 1.1;
   -webkit-tap-highlight-color: transparent;
