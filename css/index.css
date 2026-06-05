@@ -1020,6 +1020,10 @@
 }
 
 @media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+
   .hero-section {
     min-height: auto;
     padding-top: 6rem;
@@ -1087,10 +1091,10 @@
     margin-bottom: 1rem;
   }
   
-  .camp-size-large1 { font-size: clamp(2rem, 9vw, 2.8rem); }
-  .camp-size-large2 { font-size: clamp(2.4rem, 11vw, 3.4rem); }
-  .camp-size-medium1 { font-size: clamp(1.4rem, 6vw, 1.8rem); }
-  .camp-size-medium2 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+  .camp-size-large1 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  .camp-size-large2 { font-size: clamp(2.0rem, 9vw, 2.8rem); }
+  .camp-size-medium1 { font-size: clamp(1.2rem, 5vw, 1.5rem); }
+  .camp-size-medium2 { font-size: clamp(1.5rem, 7vw, 2.0rem); }
 
   .quote-box {
     margin: 1rem 0;
@@ -1128,12 +1132,30 @@
   }
 
   .section-heading-primary {
-    font-size: clamp(2rem, 8vw, 2.8rem);
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
   }
 
   .quote-heading-fancy {
-    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    font-size: clamp(1.3rem, 6vw, 1.8rem);
     margin-bottom: 1.75rem;
+  }
+
+  .stylist-heading {
+    font-size: clamp(1.8rem, 8vw, 2.3rem);
+  }
+
+  .selector-buttons-row {
+    justify-content: center;
+  }
+
+  .report-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .report-actions button {
+    width: 100%;
+    margin-bottom: 0;
   }
 
   .stylist-panel-left,

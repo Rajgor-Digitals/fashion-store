@@ -1482,6 +1482,13 @@ h1, h2, h3, h4, h5, h6 {
   .ambient-glow-bottom {
     display: none !important; /* Hide background glows on mobile to prevent overflow-x and layout shifting */
   }
+
+  .footer-status-controls-wrap {
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
 }
 
 /* Fluid Typography and Sizing for Compact Mobile Screens & Foldables */
