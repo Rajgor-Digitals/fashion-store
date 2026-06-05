@@ -8,13 +8,13 @@
 const CAMPAIGNS = [
   {
     id: "01",
-    label: "ATELIER COUTURE - ESSENTIALS",
+    label: "PREMIUM SELECTION - ESSENTIALS",
     titleLine1: "NEW AKSHAT",
     titleLine2: "FASHION",
     titleFontClass1: "font-serif camp-size-large1",
     titleFontClass2: "font-serif-royal camp-size-large2 italic",
     quotes: ["\u201cWe Believe In Quality\u201d"],
-    desc: "Welcome to a masterfully curated sanctuary where handpicked premium textiles meet state-of-the-art tailoring. Crafted for the modern wardrobe that values absolute aesthetic excellence.",
+    desc: "Welcome to a masterfully curated sanctuary of premium apparel and ready-to-wear styling. Handpicked for the modern wardrobe that values absolute aesthetic excellence.",
     ctaPrimary: "Explore Collection",
     ctaPrimaryLink: "collection.html",
     ctaSecondary: "Visit Showroom",
@@ -28,24 +28,24 @@ const CAMPAIGNS = [
     titleFontClass1: "font-royal-caps-span1 camp-size-medium1",
     titleFontClass2: "font-royal-caps-span2 camp-size-medium2",
     quotes: ["\u201cWhere Style Meets Fashion\u201d"],
-    desc: "Every silhouette, every curve, and every dynamic seam reflects twelve years of unmatched local trust. Designed for taste makers who understand the delicate pedigree of fine materials.",
-    ctaPrimary: "Discover Bespoke",
+    desc: "Every collection, silhouette, and fabric reflects twelve years of unmatched local trust. Curated for taste makers who understand the delicate pedigree of fine materials.",
+    ctaPrimary: "Discover Collection",
     ctaPrimaryLink: "collection.html",
     ctaSecondary: "Book Consult",
     ctaSecondaryLink: "#visit"
   },
   {
     id: "03",
-    label: "FAMILY FASHION - ATELIER",
+    label: "FAMILY FASHION - BOUTIQUE",
     titleLine1: "ALL FAMILY",
     titleLine2: "FEELS PREMIUM",
     titleFontClass1: "font-royal-caps-span1 camp-size-medium1",
     titleFontClass2: "font-royal-caps-span2 camp-size-medium2",
     quotes: ["\u201cFashion that feels premium.\u201d"],
-    desc: "Uncompromised tactile comfort. Our physical showroom delivers expert design advice, customizable silhouettes, premium luxury consultations, and the comfort of excellence.",
+    desc: "Uncompromised tactile comfort. Our physical showroom delivers expert styling advice, premium fabric collections, personalized consultations, and the comfort of excellence.",
     ctaPrimary: "Book Appoint",
     ctaPrimaryLink: "#visit",
-    ctaSecondary: "Our Atelier",
+    ctaSecondary: "About Us",
     ctaSecondaryLink: "about.html"
   }
 ];

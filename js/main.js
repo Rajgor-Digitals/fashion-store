@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusLabels = [
       [0,  'Preparing'],
       [30, 'Loading Assets'],
-      [60, 'Crafting Experience'],
+      [60, 'Preparing Collection'],
       [85, 'Almost Ready'],
       [99, 'Welcome'],
     ];
@@ -120,4 +120,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fallback if IntersectionObserver is not supported
     reveals.forEach(el => el.classList.add('active'));
   }
+
+  // --- 2. LENIS SMOOTH SCROLL INTEGRATION ---
+  const loadLenisSmoothScroll = () => {
+    // Keep native scroll on mobile, enhance desktop scroll experience
+    if (window.innerWidth < 1024) return;
+
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/dist/lenis.min.js';
+    script.onload = () => {
+      const lenis = new Lenis({
+        duration: 2.2,             // slowed down significantly for luxury feeling
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth exponential ease
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 0.45,     // heavily damped to maintain slow speed under rapid scroll
+        smoothTouch: false,        // preserve native touch scroll on touchpads/mobile
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      // Handle anchor click smoothly with Lenis
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            lenis.scrollTo(targetEl, { offset: -50 });
+          }
+        });
+      });
+    };
+    document.head.appendChild(script);
+  };
+  loadLenisSmoothScroll();
 });

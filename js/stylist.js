@@ -69,20 +69,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 3. THE STYLING REPORT ENGINE (local tips — no API key needed) ---
   const STYLE_TIPS = {
     Men: {
-      Wedding:  "For a wedding, pair a rich silk sherwani in ivory or gold with embroidered mojris. Layer a contrast dupatta over the shoulder for a regal finish. New Akshat Fashion carries the finest wedding sherwanis in Bhujpur, Kutch.",
+      Wedding:  "For a wedding, pair a premium classic suit or kurta-pyjama with formal footwear. Keep it elegant with understated tones. New Akshat Fashion carries the finest wedding wear in Bhujpur, Kutch.",
       Casual:   "A well-fitted linen kurta in earthy tones paired with straight-cut trousers is the perfect casual statement. Keep accessories minimal — a leather watch does the job. Find your ideal casual fit at New Akshat Fashion.",
       Festival: "Go bold for festivals — a printed cotton kurta in deep saffron or royal blue with churidar pants commands attention. Add a Nehru jacket to elevate the look. Explore our festival collection at New Akshat Fashion, Bhujpur.",
       Party:    "A slim-fit bandhgala jacket in midnight black or deep maroon over a crisp white shirt is effortlessly sharp for parties. New Akshat Fashion has an exclusive range of party-ready menswear in Kutch.",
     },
     Women: {
-      Wedding:  "A Banarasi silk saree in deep red or emerald green with a contrast blouse and gold jewellery is timeless for weddings. New Akshat Fashion offers the finest bridal sarees and lehengas in Bhujpur, Kutch.",
+      Wedding:  "A designer lehenga choli in deep jewel tones with detailed embellishments is timeless for weddings. New Akshat Fashion offers the finest lehengas in Bhujpur, Kutch.",
       Casual:   "A flowy printed kurti with palazzo pants in a complementary tone is both comfortable and stylish for everyday wear. Pair with kolhapuri sandals for a complete look. Shop the latest kurtis at New Akshat Fashion.",
       Festival: "A vibrant Chaniya Choli in mirror-work or bandhani print is the ultimate festival outfit. Choose bright pinks, oranges, or turquoise to stand out. New Akshat Fashion has the best festival collection in Kutch.",
-      Party:    "An embellished georgette saree or a designer anarkali suit in jewel tones is perfect for evening parties. Let the fabric do the talking with minimal jewellery. Discover party wear at New Akshat Fashion, Bhujpur.",
+      Party:    "A designer anarkali suit or elegant fusion wear in jewel tones is perfect for evening parties. Let the details do the talking with minimal accessories. Discover party wear at New Akshat Fashion, Bhujpur.",
     },
     Kids: {
-      Wedding:  "Dress little ones in a mini sherwani with a matching safa for boys, or a lehenga choli in pastel shades for girls — adorable and occasion-perfect. New Akshat Fashion has a delightful kids' wedding range.",
-      Casual:   "Comfortable cotton kurta-pyjama sets in fun prints keep kids stylish and at ease for casual outings. Easy to wear, easy to wash. Find the best kids' casuals at New Akshat Fashion, Bhujpur.",
+      Wedding:  "Dress little ones in a smart formal suit for boys, or a lehenga choli in pastel shades for girls — adorable and occasion-perfect. New Akshat Fashion has a delightful kids' wedding range.",
+      Casual:   "Comfortable kids' t-shirts and pants in fun prints keep kids stylish and at ease for casual outings. Easy to wear, easy to wash. Find the best kids' casuals at New Akshat Fashion, Bhujpur.",
       Festival: "Bright bandhani or block-print outfits in festive colours make kids the star of any celebration. Pair with traditional footwear for the full look. Shop kids' festival wear at New Akshat Fashion.",
       Party:    "A smart Indo-western outfit — a printed jacket over a kurta for boys, or a ruffled dress with embroidery for girls — is perfect for kids' parties. New Akshat Fashion has a wide kids' party collection in Kutch.",
     },
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnShare.addEventListener('click', () => {
       if (!currentAdviceText) return;
       const formattedMessage = encodeURIComponent(
-        `Hi New Akshat Fashion! The Smart Stylist AI recommended this custom look for me: "${currentAdviceText}". I would love to check out your collections for this! 🌟`
+        `Hi New Akshat Fashion! The Smart Stylist AI recommended this personalized look for me: "${currentAdviceText}". I would love to check out your collections for this! 🌟`
       );
       const whatsappUrl = `https://wa.me/919327620020?text=${formattedMessage}`;
       window.open(whatsappUrl, '_blank');

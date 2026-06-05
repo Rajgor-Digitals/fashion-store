@@ -479,9 +479,19 @@
 
 @media (min-width: 768px) {
   .hero-controls-bar {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+  }
+  .autoplay-timeline-group {
+    grid-column: 1;
+    justify-self: start;
+  }
+  .carousel-chevrons-group {
+    grid-column: 2;
+    justify-self: center;
   }
 }
 
